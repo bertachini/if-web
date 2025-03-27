@@ -36,6 +36,11 @@ class ProductController extends Controller
         $product->price = $r->price;
         $product->save();
         return redirect()->route('products.show');
+    }
 
+    function delete($id): RedirectResponse {
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('products.show');
     }
 }
